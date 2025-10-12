@@ -1883,6 +1883,11 @@ void Node3DEditorViewport::_sinput(const Ref<InputEvent> &p_event) {
 					} else if (zoom_mouse_preference == NAVIGATION_LEFT_MOUSE && _is_nav_modifier_pressed("spatial_editor/viewport_zoom_modifier_1") && _is_nav_modifier_pressed("spatial_editor/viewport_zoom_modifier_2")) {
 						break;
 					}
+					
+					if (freelook_active) {
+						set_freelook_active(false);
+						break
+					}
 
 					if (spatial_editor->get_tool_mode() == Node3DEditor::TOOL_RULER) {
 						EditorNode::get_singleton()->get_scene_root()->add_child(ruler);
